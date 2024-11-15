@@ -1,15 +1,22 @@
 import { useForm } from "react-hook-form"
 import { useAuth } from "../context/AuthContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 function LoginPage() {
 
   const { register, handleSubmit, formState:{ errors } } = useForm()
 
-  const { signin, errors: signInErrors } = useAuth()
+  const { signin, errors: signInErrors, isAuthenticated } = useAuth()
+
+  const navigate = useNavigate()
 
   const onSubmit = handleSubmit(data =>{
     signin(data);
   })
+
+  useEffect(()=>{
+    if(isAuthenticated) navigate('/tasks')
+  }, [isAuthenticated])
 
   return (
     <div className="flex h-[calc(100vh-100px)] items-center justify-center">
@@ -21,7 +28,7 @@ function LoginPage() {
           </div>
         ))
       }
-      <h1 className="text-4xl font-bold">Login</h1>
+      <h1 className="text-3xl font-bold my-2">Login</h1>
 
       <form onSubmit={onSubmit}>
           <input type="email" {...register("email", {required:true})} 
@@ -42,7 +49,7 @@ function LoginPage() {
           ) }
 
 
-          <button type="submit">
+          <button type="submit" className="bg-sky-500 hover:bg-sky-600 text-white px-4 py-2 rounded-md">
             Login
           </button>
       </form>

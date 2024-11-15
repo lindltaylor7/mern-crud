@@ -17,6 +17,7 @@ function RegisterPage() {
   })
 
   return (
+    <div className="flex h-[calc(100vh-100px)] items-center justify-center">
     <div className="bg-zinc-800 max-w-md p-10 rounded-md">
       {
         registerErrors.map((error, i) => (
@@ -25,7 +26,9 @@ function RegisterPage() {
           </div>
         ))
       }
+      <h1 className="text-3xl font-bold my-2">Register</h1>
       <form onSubmit={onSubmit}>
+        
         <input type="text" {...register("username", {required:true})} 
           className="w-full bg-zinc-700 text-white ps-4 py-2 rounded-md my-2"
           placeholder="Username"
@@ -52,13 +55,14 @@ function RegisterPage() {
         ) }
 
 
-        <button type="submit">
+        <button type="submit" className="bg-sky-500 hover:bg-sky-600 text-white px-4 py-2 rounded-md">
           Register
         </button>
       </form>
       <p className="flex gap-x-2 justitfy-between">
        Already have an account? <Link to="/login" className="text-sky-500"> Log in </Link>
       </p>
+    </div>
     </div>
   )
 }
