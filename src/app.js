@@ -18,6 +18,15 @@ app.use(morgan('dev'))
 app.use(express.json())
 app.use(cookieParser())
 
+// Sirve los archivos estáticos del frontend
+app.use(express.static(path.join(__dirname, '../client/build')));
+
+// Ruta para manejar las demás solicitudes y enviar el frontend
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+});
+
+
 app.use("/api", authRoutes)
 app.use("/api", taskRoutes)
 
