@@ -16,7 +16,7 @@ const app = express();
 
 dotenv.config()
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: 'https://mern-crud-olcs.onrender.com',
     credentials: true
 }))
 app.use(morgan('dev'))
