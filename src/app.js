@@ -24,11 +24,11 @@ app.use(express.json())
 app.use(cookieParser())
 
 // Sirve los archivos estáticos del frontend
-app.use(express.static(path.join(__dirname, '../client/build')));
+app.use(express.static(path.join(__dirname, '../client/dist')));
 
 // Ruta para manejar las demás solicitudes y enviar el frontend
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+  res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
 });
 
 
