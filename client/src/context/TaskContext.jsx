@@ -23,10 +23,8 @@ export function TaskProvider({ children }) {
 
   const getTasks = async () => {
     try {
-      console.log("calling getTasks");
       const res = await getTasksRequest();
       setTasks(res.data);
-      console.log(res.data);
     } catch (error) {
       console.error(error);
     }
