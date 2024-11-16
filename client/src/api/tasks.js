@@ -1,10 +1,6 @@
 import axios from "./axios"
 
-export const getTasksRequest = () => {
-    console.log("calling tasks");
-    axios.get("/tasks")
-}
-
+export const getTasksRequest = () => axios.get("/tasks")
 
 export const getTaskRequest = (id) => axios.get(`/tasks/${id}`)
 
