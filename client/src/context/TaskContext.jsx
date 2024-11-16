@@ -26,7 +26,7 @@ export function TaskProvider({ children }) {
       const res = await getTasksRequest();
       setTasks(res.data);
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   };
 
@@ -49,7 +49,7 @@ export function TaskProvider({ children }) {
       const res = await getTaskRequest(id);
       return res.data;
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   };
 
@@ -57,7 +57,7 @@ export function TaskProvider({ children }) {
     try {
       await updateTaskRequest(id, task);
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   };
 
